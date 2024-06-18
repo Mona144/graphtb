@@ -1,5 +1,5 @@
 {
-  description = "xDSL devshell";
+  description = "graphtb devshell";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
