@@ -1,0 +1,33 @@
+# This workflow check the format all files in the repository through pre-commit
+# See .pre-commit-config.yaml and pyproject.toml for precise configuration of
+# formatting tools (ruff + black).
+
+name: Code Formatting
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  code-formatting:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Upgrade pip
+      run: |
+        pip install --upgrade pip
+
+    - name: Run code formatting checks with pre-commit
+      uses: pre-commit/action@v3.0.0

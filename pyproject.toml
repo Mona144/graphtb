@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "graphtb"
+version = "0.1.0"
+description = "A Python Graph Toolbox"
+authors = ["Mona <mona@antonlydike.de>", "Anton Lydike <me@antonlydike.de>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+ruff = "^0.4.9"
+pytest = "^8.2.2"
+pre-commit = "^3.7.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pyright]
+reportImportCycles = false
+enableTypeIgnoreComments = false
+typeCheckingMode = "strict"
+"include" = ["graphtb"]
+
+
+[tool.ruff]
+select = ["E", "F", "W", "I", "UP", "PT", "TID251"]
+ignore = [ ]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+
+[tool.pytest.ini_options]
+python_files = ["tests/*test_*.py"]
+python_classes = "Test_*"
+python_functions = "test_*"
+addopts = ["--durations=20", "--maxfail=5"]

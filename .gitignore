@@ -174,3 +174,5 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+# ignore pycharm configurations - do not share global development settings
+.idea
